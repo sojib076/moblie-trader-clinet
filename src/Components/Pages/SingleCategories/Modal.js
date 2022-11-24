@@ -57,7 +57,7 @@ const Modal = ({ modaldata, setModaldata }) => {
                 </div>
             </div>
         </div>
-    );
+         );
 };
 
 export default Modal;
