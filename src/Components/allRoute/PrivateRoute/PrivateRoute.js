@@ -8,8 +8,7 @@ const PrivateRoute = ({children}) => {
       
     if (loading) {
         return <div className='text-center'> 
-            <h1 className='2xl'>Please Wait Loading</h1>
-            
+            <h1 className='2xl'>Please Wait Loading</h1>        
         </div>
      }
     if (user) {

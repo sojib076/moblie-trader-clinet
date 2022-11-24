@@ -1,14 +1,21 @@
 import React, { useContext } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Usercontex } from '../../../../AuthContex/AuthContex';
 
 
 const Login = () => {
+    let navigate = useNavigate();
+    let location = useLocation();
+
+    let from = location.state?.from?.pathname || "/";
+
     const {login,googleSignIn}=useContext(Usercontex)
     const handellogin = (e) => {
         e.preventDefault();
         const email = e.target.email.value;
         const password = e.target.password.value;
         login(email, password).then(res => {
+            navigate(from, { replace: true });
             console.log(res)
         })
         
@@ -20,7 +27,7 @@ const Login = () => {
         })
     }
     return (
-        <div data-aos="fade-up-right">
+        <div >
             <div className="hero min-h-screen ">
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <div className="text-center lg:text-left">
