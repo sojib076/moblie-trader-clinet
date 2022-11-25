@@ -13,6 +13,8 @@ import SingleCategories from "./Components/Pages/SingleCategories/SingleCategori
 import { Toaster } from 'react-hot-toast';
 import UserDashboard from "./Components/Pages/Dasboard/UserDashboard/UserDashboard";
 import Payment from "./Components/Pages/Dasboard/Payment/Payment";
+import SellerRoute from "./Components/allRoute/PrivateRoute/SellerRoute";
+import BuyerRoute from "./Components/allRoute/PrivateRoute/BuyerRoute";
 
 
 function App() {
@@ -37,10 +39,11 @@ function App() {
     {
       path: '/dashboard', element: <PrivateRoute> <DashboardLayout> </DashboardLayout></PrivateRoute>,
       children: [
-        { path: '/dashboard/myorders', element: <Myorders> </Myorders> },
+        { path: '/dashboard/myorders', element:<BuyerRoute> <Myorders> </Myorders></BuyerRoute> },
         { path: '/dashboard', element: <UserDashboard></UserDashboard>},
-        { path: '/dashboard/myproducts', element: <Myproducts></Myproducts> },
-        { path: '/dashboard/addproduct', element: <Addproduct></Addproduct> },
+        { path: '/dashboard/myproducts', element: <SellerRoute> <Myproducts></Myproducts></SellerRoute>   },
+        { path: '/dashboard/addproduct', element: <SellerRoute><Addproduct></Addproduct> </SellerRoute>},
+        { path: '/dashboard/admin', element: <SellerRoute><Addproduct></Addproduct> </SellerRoute>},
         {path:'/dashboard/payment/:id', element:<Payment></Payment>,
         loader:({params}) => fetch(`http://localhost:5000/payment/${params.id}`)
       }

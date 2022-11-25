@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { Usercontex } from '../../../AuthContex/AuthContex';
 
-const SellerRoute = ({children}) => {
+const BuyerRoute = ({children}) => {
         const { user, loading } = useContext(Usercontex);
           const {data ,isLoading}=useQuery({
             queryKey: ['user', user?.email],
@@ -20,7 +20,7 @@ const SellerRoute = ({children}) => {
             return <h1>Loadin</h1>
         }
 
-        if (user && data?.role === 'Seller') {
+        if (user && data?.role === 'Buyer') {
             return children;
         }
 
@@ -28,4 +28,4 @@ const SellerRoute = ({children}) => {
     
 };
 
-export default SellerRoute;
+export default BuyerRoute;
