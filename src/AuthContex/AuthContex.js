@@ -4,8 +4,6 @@ import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, on
 import app from '../Firebase/firebase.init';
 
 
-
-
 const auth = getAuth(app);
 export const Usercontex = createContext()
 
@@ -13,7 +11,6 @@ const googelProvider = new GoogleAuthProvider()
 
 
 // this contain all the data that we want to share with other components
-
 
 const Authcontex = ({ children }) => {
 

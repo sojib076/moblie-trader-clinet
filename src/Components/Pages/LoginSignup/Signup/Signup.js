@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Usercontex } from '../../../../AuthContex/AuthContex';
 
 const Signup = () => {
-    const {createuser,updateuser}=useContext(Usercontex)
+    const {createuser,updateuser,googleSignIn}=useContext(Usercontex)
     const handelsignup = (e) => {
         e.preventDefault();
         const name = e.target.name.value;
@@ -16,6 +16,14 @@ const Signup = () => {
         })
        
     }
+    const handelgoogle = () => {
+        googleSignIn().then(res => {
+            const name = res.user.displayName;
+            const email = res.user.email;
+            const option="Buyer"
+          saveuser(name,email,option)
+        })
+    }
     const saveuser = (name,email,option) => {
         console.log(name,email,);
         const user = { name, email, 
@@ -27,6 +35,7 @@ const Signup = () => {
             body: JSON.stringify(user)
         }).then(res => res.json())
     }
+
     return (
 
         <div>
@@ -69,6 +78,7 @@ const Signup = () => {
 
                             <div className="form-control mt-6">
                                 <button className="btn btn-primary">Login</button>
+                                <button className="btn btn-primary" onClick={handelgoogle}>Googlr</button>
                             </div>
                         </form>
                     </div>

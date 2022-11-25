@@ -4,7 +4,8 @@ import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 import Checkout from '../Checkout/Checkout';
 // import Checkout from '../Checkout/checkout';
-const stripePromise = loadStripe('pk_test_51M6C3VDgKvWy1pBDsOd4iDHNO4UpV7wpLne8WcqLabBMi9P9QEzXndUvmy9YeibBv2Jqs2XdPxqzIlikOdYKs3gy00F4mmLI8a');
+const stripePromise = loadStripe(process.env.REACT_APP_stripe);
+console.log(process.env.REACT_APP_stripe);
 const Payment = () => {
     // const treatmentinfo = useLoaderData()
     // const { treatment, price, patient } = treatmentinfo

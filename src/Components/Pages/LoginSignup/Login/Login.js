@@ -2,30 +2,50 @@ import React, { useContext } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Usercontex } from '../../../../AuthContex/AuthContex';
 
-
 const Login = () => {
+
+    const { login, googleSignIn } = useContext(Usercontex)
     let navigate = useNavigate();
     let location = useLocation();
-
     let from = location.state?.from?.pathname || "/";
 
-    const {login,googleSignIn}=useContext(Usercontex)
     const handellogin = (e) => {
         e.preventDefault();
         const email = e.target.email.value;
         const password = e.target.password.value;
+
         login(email, password).then(res => {
             navigate(from, { replace: true });
-            console.log(res)
         })
-        
+
     }
+
     const handelgoogle = () => {
-        googleSignIn().then(res => { 
-            console.log(res)
-            console.log('buyer');
+        googleSignIn().then(res => {
+
+            navigate(from, { replace: true });
+            console.log('google login');
+            const name = res.user.displayName;
+            const email = res.user.email;
+            const option="Buyer"
+          saveuser(name,email,option)
+
         })
     }
+    const saveuser = (name, email, option) => {
+        console.log(name, email,);
+        const user = {
+            name, email,
+            role: option
+        }
+        console.log(user);
+        fetch('http://localhost:5000/addusers', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(user)
+        }).then(res => res.json())
+    }
+    
     return (
         <div >
             <div className="hero min-h-screen ">
@@ -46,7 +66,7 @@ const Login = () => {
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input type="text" placeholder="password" className="input input-bordered" name='password'/>
+                                <input type="text" placeholder="password" className="input input-bordered" name='password' />
                                 <label className="label">
                                     <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                                 </label>
