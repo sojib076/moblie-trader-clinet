@@ -17,8 +17,8 @@ const Categories = () => {
             <h1 className='text-3xl '> All Categories </h1>
             <div className='grid lg:grid-cols-3  grid-cols-2' >
                 {
-                    data?.map(info => { 
-                       return <Link to={`/categories/${info._id}`} key={info._id} > 
+                    data?.map(info => {
+                       return <Link to={`/categories/${info._id}`}> 
                         <div className='w-[30%] h-[40%] mx-auto'>
                                 <h1 className='btn btn-outline lg:my-0 lg:mt-5 my-5'> {info.category}</h1>
                                 <img src={info.img} alt="" srcSet='' title={info.category}  className='hidden lg:block'/>

@@ -9,12 +9,23 @@ const Signup = () => {
         const email = e.target.email.value;
         const password = e.target.password.value;
         const option = e.target.option.value;
-      
+        
         createuser(email, password).then(res => {
-            console.log(res);
+            saveuser(name,email,option)
             updateuser(name)
         })
        
+    }
+    const saveuser = (name,email,option) => {
+        console.log(name,email,);
+        const user = { name, email, 
+            role:option }
+            console.log(user);
+        fetch('http://localhost:5000/addusers', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(user)
+        }).then(res => res.json())
     }
     return (
 

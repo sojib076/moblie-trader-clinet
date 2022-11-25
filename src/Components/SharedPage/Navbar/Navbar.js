@@ -4,10 +4,10 @@ import { Usercontex } from '../../../AuthContex/AuthContex';
 import Topbar from '../../Layout/Topbar';
 
 const Navbar = () => {
-    const { user,logout } = useContext(Usercontex)
+    const { user, logout } = useContext(Usercontex)
     return (
         <div className='shadow-xl shadow-black my-5  lg:sticky lg:top-0 lg:z-50 '>
-           
+
             <div className="navbar bg-base-100">
                 <div className="navbar-start">
                     <div className="dropdown">
@@ -18,31 +18,43 @@ const Navbar = () => {
 
                             <li> <Link to={'/'}> Home</Link>  </li>
                             <li> <Link to={'/blog'}> Blog</Link>  </li>
-                            <li> <Link to={'/login'}> Login</Link>  </li>
-                            <li> <Link to={'/signup'}> signup</Link>  </li>
+                            {
+                                user?.email ? <>
+                                    <li> <Link to={'/dashboard'}> Dashboard</Link>  </li>
+                                    <li> <Link onClick={logout}> Logout</Link>  </li>
+                                    {
+                                        user.displayName
+                                    }
+                                </> : <>
+                                    <>
+                                        <li> <Link to={'/login'}> Login</Link>  </li>
+                                        <li> <Link to={'/signup'}> signup</Link>  </li>
+                                    </>
+                                </>
+                            }
                         </ul>
                     </div>
                     {/* <a className="btn btn-ghost normal-case text-xl">daisyUI</a> */}
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal p-0">
-
                         <li> <Link to={'/'}> Home</Link>  </li>
                         <li> <Link to={'/blog'}> Blog</Link>  </li>
                         {
-                            user?.email?<>
-                                    <li> <Link to={'/dashboard'}> Dashboard</Link>  </li>
-                                    <li> <Link onClick={logout}> Logout</Link>  </li>
-                                    {
-                                        user.displayName
-                                    }
-                            </> : <> 
+                            user?.email ? <>
+                                <li> <Link to={'/dashboard'}> Dashboard</Link>  </li>
+                                <li> <Link onClick={logout}> Logout</Link>  </li>
+                                {
+                                    user.displayName
+                                }
+                            </> : <>
                                 <>
                                     <li> <Link to={'/login'}> Login</Link>  </li>
                                     <li> <Link to={'/signup'}> signup</Link>  </li>
                                 </>
                             </>
                         }
+
                     </ul>
                 </div>
                 <div className="navbar-end">

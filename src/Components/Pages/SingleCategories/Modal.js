@@ -1,11 +1,12 @@
 import React, { useContext } from 'react';
 import { Usercontex } from '../../../AuthContex/AuthContex';
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 
 const Modal = ({ modaldata, setModaldata }) => {
     const { user } = useContext(Usercontex)
 
-    const { name, resalePrice, _id } = modaldata
+    const { name, resalePrice, _id,picture,selleremail} = modaldata
+    console.log(modaldata);
     const handelmodal = (e) => {
         e.preventDefault();
         const number = e.target.number.value
@@ -13,9 +14,12 @@ const Modal = ({ modaldata, setModaldata }) => {
         const order = {
             orderid: _id,
             email: user?.email,
-            resalePrice: resalePrice,
-            location,
+            resalePrice,
+            picture,
+            name,
             number,
+            location,
+            selleremail,
         }    
         fetch('http://localhost:5000/allorders', {
             method: 'POST',

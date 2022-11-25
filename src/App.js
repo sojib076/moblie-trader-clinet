@@ -11,6 +11,8 @@ import Login from "./Components/Pages/LoginSignup/Login/Login";
 import Signup from "./Components/Pages/LoginSignup/Signup/Signup";
 import SingleCategories from "./Components/Pages/SingleCategories/SingleCategories";
 import { Toaster } from 'react-hot-toast';
+import UserDashboard from "./Components/Pages/Dasboard/UserDashboard/UserDashboard";
+import Payment from "./Components/Pages/Dasboard/Payment/Payment";
 
 
 function App() {
@@ -36,8 +38,12 @@ function App() {
       path: '/dashboard', element: <PrivateRoute> <DashboardLayout> </DashboardLayout></PrivateRoute>,
       children: [
         { path: '/dashboard/myorders', element: <Myorders> </Myorders> },
+        { path: '/dashboard', element: <UserDashboard></UserDashboard>},
         { path: '/dashboard/myproducts', element: <Myproducts></Myproducts> },
         { path: '/dashboard/addproduct', element: <Addproduct></Addproduct> },
+        {path:'/dashboard/payment/:id', element:<Payment></Payment>,
+        loader:({params}) => fetch(`http://localhost:5000/payment/${params.id}`)
+      }
       ]
     }
   ]);
