@@ -7,9 +7,6 @@ const Categories = () => {
     const { data } = useQuery({
         queryKey: ['categories'],
         queryFn: async () => {
-            // const res = await fetch('http://localhost:5000/categories');
-            // const data = await res.json();
-            // return data;
             const res = await axios.get('http://localhost:5000/categories');
            return res.data;
         }

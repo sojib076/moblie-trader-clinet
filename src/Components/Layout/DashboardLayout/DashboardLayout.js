@@ -30,12 +30,12 @@ const DashboardLayout = () => {
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-80 bg-base-100 text-base-content justify-center">
                         {
-                            data?.role === 'Buyer' && <li> <Link to={'/dashboard/myorders'} className='btn btn-primary'> My orders </Link></li>
+                            data?.role === 'Buyer' && <li> <Link to={'/dashboard/myorders'} className='btn bg-[#42C8B7] mt-5 hover:text-white'> My orders </Link></li>
                         }
                         {
                             data?.role === 'Seller' && <>
-                                <li><Link to={'/dashboard/addproduct'}> Add Products </Link></li>
-                                <li><Link to={'/dashboard/myproducts'}> My Products </Link></li>
+                                <li><Link to={'/dashboard/addproduct'} className='btn bg-[#42C8B7] mt-5 hover:text-white'> Add Products </Link></li>
+                                <li><Link to={'/dashboard/myproducts'} className='btn bg-[#42C8B7] mt-5 hover:text-white'> My Products </Link></li>
                             </>
                         }
                     </ul>

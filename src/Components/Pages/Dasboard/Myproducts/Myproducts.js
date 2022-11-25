@@ -25,9 +25,16 @@ const Myproducts = () => {
                     toast.success('Product deleted successfully')
                     refetch()
                 }
-                    
-                
             })
+    }
+    const handelpromote = (id) => {
+       fetch(`http://localhost:5000/promote `,{
+        method:'POST',
+        headers:{
+            'Content-Type':'application/json'
+        },
+        body:JSON.stringify({id})
+       })
     }
 
     return (
@@ -42,7 +49,7 @@ const Myproducts = () => {
                             }</h2>
                             <p> selling price :{item.resalePrice}</p>
                             <div className="card-actions justify-end">
-                                <button className="btn btn-primary">Promote </button>
+                                <button className="btn btn-primary" onClick={()=>handelpromote(item._id)}>Promote </button>
                                 <button className="btn btn-ghost" onClick={()=>handeldelt(item._id)}>Delete</button>
                             </div>
                         </div>
