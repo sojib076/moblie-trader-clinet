@@ -1,10 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
+import Loading from '../../../Loading/Loading';
 
 import Admodal from './Admodal';
 
 const Advertisment = () => {
-    const { data,isLoading } = useQuery({
+    const { data, isLoading } = useQuery({
         queryKey: ['advertisment'],
         queryFn: async () => {
             const res = await fetch(`http://localhost:5000/promote`)
@@ -14,10 +15,10 @@ const Advertisment = () => {
     })
     const [modaldata, setModaldata] = useState(null)
     console.log(modaldata);
-        if (isLoading) {
-            return <div className='text-5xl'>Loading...</div>
-            
-        }
+    if (isLoading) {
+        return <Loading></Loading>
+
+    }
     return (
         <div className=''>
             <div className='grid lg:grid-cols-3 gap-5 mt-5 lg:[w-100%] w-90% mx-auto'>

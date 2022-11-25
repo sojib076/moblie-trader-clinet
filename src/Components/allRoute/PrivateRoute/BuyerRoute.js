@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { Usercontex } from '../../../AuthContex/AuthContex';
+import Loading from '../../Loading/Loading';
 
 const BuyerRoute = ({children}) => {
         const { user, loading } = useContext(Usercontex);
@@ -17,7 +18,7 @@ const BuyerRoute = ({children}) => {
         
         const location = useLocation();
         if (loading ||isLoading ) {
-            return <h1>Loadin</h1>
+            return <Loading></Loading>
         }
 
         if (user && data?.role === 'Buyer') {

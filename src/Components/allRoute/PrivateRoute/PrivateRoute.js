@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';import { Usercontex } from '../../../AuthContex/AuthContex';
+import Loading from '../../Loading/Loading';
 ;
 
 const PrivateRoute = ({children}) => {
@@ -7,9 +8,7 @@ const PrivateRoute = ({children}) => {
     const location = useLocation()
       
     if (loading) {
-        return <div className='text-center'> 
-            <h1 className='2xl'>Please Wait Loading</h1>        
-        </div>
+        return <Loading></Loading>
      }
     if (user) {
         return children
