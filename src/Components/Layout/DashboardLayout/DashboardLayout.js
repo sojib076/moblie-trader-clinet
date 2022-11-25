@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { Usercontex } from '../../../AuthContex/AuthContex';
+import Footer from '../../SharedPage/Footer/Footer';
 import Navbar from '../../SharedPage/Navbar/Navbar';
 
 const DashboardLayout = () => {
@@ -42,6 +43,7 @@ const DashboardLayout = () => {
 
                 </div>
             </div>
+            <Footer></Footer>
         </div>
     );
 };
