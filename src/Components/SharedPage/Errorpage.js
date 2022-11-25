@@ -17,9 +17,9 @@ const Errorpage = () => {
     }
 
     return (
-        <div className='error'>
-            <p className='text-red-600'>{error.statusText || error.message}</p>
-            <h4 className="text-3xl"> Please <button onClick={handleLogOut} className='btn btn-error'>Sign out</button> </h4>
+        <div className='error flex justify-center items-center flex-col'>
+            <p className='text-black text-5xl'>{error.statusText || error.message}</p>
+            <h4 className="text-5xl "> Please <button onClick={handleLogOut} className='btn btn-error'>Sign out</button> </h4>
         </div>
     );
 };
