@@ -38,6 +38,11 @@ const DashboardLayout = () => {
                                 <li><Link to={'/dashboard/addproduct'} className='btn bg-[#42C8B7] mt-5 hover:text-white'> Add Products </Link></li>
                                 <li><Link to={'/dashboard/myproducts'} className='btn bg-[#42C8B7] mt-5 hover:text-white'> My Products </Link></li>
                             </>
+                        } {
+                            data?.role === 'admin' &&  <> 
+                            <li><Link to={'/dashboard/allseller'} className='btn bg-[#42C8B7] mt-5 hover:text-white'> All Seller </Link></li>
+                            <li><Link to={'/dashboard/allbuyer'} className='btn bg-[#42C8B7] mt-5 hover:text-white'> All Buyer </Link></li>
+                            </>
                         }
                     </ul>
 

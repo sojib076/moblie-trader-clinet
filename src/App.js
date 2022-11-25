@@ -16,6 +16,9 @@ import Payment from "./Components/Pages/Dasboard/Payment/Payment";
 import SellerRoute from "./Components/allRoute/PrivateRoute/SellerRoute";
 import BuyerRoute from "./Components/allRoute/PrivateRoute/BuyerRoute";
 import Errorpage from "./Components/SharedPage/Errorpage";
+import Adminroute from "./Components/allRoute/PrivateRoute/Adminroute";
+import Allbuyer from "./Components/Pages/Dasboard/Allbuyer/Allbuyer";
+import Allseller from "./Allseller";
 
 
 function App() {
@@ -46,6 +49,10 @@ function App() {
         { path: '/dashboard', element: <UserDashboard></UserDashboard>},
         { path: '/dashboard/myproducts', element: <SellerRoute> <Myproducts></Myproducts></SellerRoute>   },
         { path: '/dashboard/addproduct', element: <SellerRoute><Addproduct></Addproduct> </SellerRoute>},
+        { path: '/dashboard/allbuyer', element: <Adminroute><Allbuyer></Allbuyer> </Adminroute>},
+        { path: '/dashboard/allseller', element: <Adminroute><Allseller> </Allseller> </Adminroute>},
+   
+
         { path: '/dashboard/admin', element: <SellerRoute><Addproduct></Addproduct> </SellerRoute>},
         {path:'/dashboard/payment/:id', element:<Payment></Payment>,
         loader:({params}) => fetch(`http://localhost:5000/payment/${params.id}`)
