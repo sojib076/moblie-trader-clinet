@@ -1,29 +1,28 @@
-// pk_test_51M6C3VDgKvWy1pBDsOd4iDHNO4UpV7wpLne8WcqLabBMi9P9QEzXndUvmy9YeibBv2Jqs2XdPxqzIlikOdYKs3gy00F4mmLI8a
 
 import React, { useEffect, useState } from 'react';
 import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js';
+import toast from 'react-hot-toast';
 
 const Checkout = ({ data }) => {
-    // const [cardError, setCardError] = useState('');
     const [cardError, setError] = useState('');
-    const { resalePrice,email,_id ,orderid} = data
-    const [ clientSecret,setClientSecret] = useState('')
-    const [ success , setsuccess] = useState(false)
-    const [ transId , settransId] = useState('')
+    const { resalePrice, email, _id, orderid } = data
+    const [clientSecret, setClientSecret] = useState('')
+    const [success, setsuccess] = useState(false)
+    const [transId, settransId] = useState('')
 
     useEffect(() => {
-        // Create PaymentIntent as soon as the page loads
         fetch("http://localhost:5000/create-payment", {
             method: "POST",
-            headers: { "Content-Type": "application/json" ,
-            // auhtorization: `Bearer ${localStorage.getItem('token')}`
-        },
-            body: JSON.stringify({resalePrice}),
+            headers: {
+                "Content-Type": "application/json",
+
+            },
+            body: JSON.stringify({ resalePrice }),
         })
             .then((res) => res.json())
             .then((data) => setClientSecret(data.clientSecret));
     }, [resalePrice]);
-    console.log(clientSecret); 
+    console.log(clientSecret);
 
 
     const stripe = useStripe();
@@ -38,7 +37,7 @@ const Checkout = ({ data }) => {
         if (!card) {
             return;
         }
-        const { error, paymentMethod } = await stripe.createPaymentMethod({
+        const { error } = await stripe.createPaymentMethod({
             type: 'card',
             card: card,
         })
@@ -49,7 +48,7 @@ const Checkout = ({ data }) => {
         } else {
             setError('')
         }
-        const { paymentIntent, error:confirmError } = await stripe.confirmCardPayment(
+        const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(
             clientSecret,
             {
                 payment_method: {
@@ -60,11 +59,11 @@ const Checkout = ({ data }) => {
                 },
             },
         );
-        if(confirmError){
+        if (confirmError) {
             setError(cardError.message)
             return
         }
-        if (paymentIntent.status === 'succeeded')  { 
+        if (paymentIntent.status === 'succeeded') {
             const payment = {
                 paymentId: paymentIntent.id,
                 email: email,
@@ -72,20 +71,18 @@ const Checkout = ({ data }) => {
                 orderid: orderid,
             }
 
-            fetch(`http://localhost:5000/conpayment`, { 
+            fetch(`http://localhost:5000/conpayment`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payment),
             })
                 .then((res) => res.json())
-                .then((data) => {   
-                   
-               })
-               setsuccess(true)
-               settransId(paymentIntent.id)
+                .then((data) => {
+                })
+            setsuccess(true)
+            settransId(paymentIntent.id)
 
         }
-        
 
     }
     return (
@@ -111,10 +108,10 @@ const Checkout = ({ data }) => {
                     Pay
                 </button>
                 {
-                    cardError && <p className='text-danger'>{cardError}</p>
+                    cardError && toast.error(<p className='text-danger'>{cardError}</p>)
                 }
                 {
-                    success?<p className='text-black'>Your payment is successful. Your transaction id is {transId}</p> : ''
+                    success ? toast.success(<p className='text-black'>Your payment is successful. Your transaction id is {transId}</p>) : ''
                 }
             </form>
         </div>

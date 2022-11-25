@@ -78,7 +78,7 @@ const Signup = () => {
 
                             <div className="form-control mt-6">
                                 <button className="btn btn-primary">Login</button>
-                                <button className="btn btn-primary" onClick={handelgoogle}>Googlr</button>
+                                <button className="btn btn-outline mt-2" onClick={handelgoogle}>Google</button>
                             </div>
                         </form>
                     </div>

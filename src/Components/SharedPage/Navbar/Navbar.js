@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Usercontex } from '../../../AuthContex/AuthContex';
-import Topbar from '../../Layout/Topbar';
+
 
 const Navbar = () => {
     const { user, logout } = useContext(Usercontex)
@@ -22,9 +22,6 @@ const Navbar = () => {
                                 user?.email ? <>
                                     <li> <Link to={'/dashboard'}> Dashboard</Link>  </li>
                                     <li> <Link onClick={logout}> Logout</Link>  </li>
-                                    {
-                                        user.displayName
-                                    }
                                 </> : <>
                                     <>
                                         <li> <Link to={'/login'}> Login</Link>  </li>

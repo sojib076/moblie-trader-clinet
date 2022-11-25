@@ -1,8 +1,6 @@
 import React, { useContext } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';import { Usercontex } from '../../../AuthContex/AuthContex';
 import Loading from '../../Loading/Loading';
-;
-
 const PrivateRoute = ({children}) => {
     const {user,loading} = useContext(Usercontex)
     const location = useLocation()
@@ -14,7 +12,6 @@ const PrivateRoute = ({children}) => {
         return children
     } 
    return <Navigate to="/login" state={{ from: location }} replace />;
-        
     
 };
 
