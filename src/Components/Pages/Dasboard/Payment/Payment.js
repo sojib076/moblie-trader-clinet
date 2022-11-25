@@ -3,13 +3,10 @@ import { loadStripe } from '@stripe/stripe-js';
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 import Checkout from '../Checkout/Checkout';
-// import Checkout from '../Checkout/checkout';
+
 const stripePromise = loadStripe(process.env.REACT_APP_stripe);
-console.log(stripePromise);
+
 const Payment = () => {
-    // const treatmentinfo = useLoaderData()
-    // const { treatment, price, patient } = treatmentinfo
-    // console.log(treatment, price, patient);
     const data = useLoaderData()
     const {name,resalePrice,email} = data
     return (

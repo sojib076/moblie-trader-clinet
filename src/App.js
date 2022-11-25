@@ -15,12 +15,14 @@ import UserDashboard from "./Components/Pages/Dasboard/UserDashboard/UserDashboa
 import Payment from "./Components/Pages/Dasboard/Payment/Payment";
 import SellerRoute from "./Components/allRoute/PrivateRoute/SellerRoute";
 import BuyerRoute from "./Components/allRoute/PrivateRoute/BuyerRoute";
+import Errorpage from "./Components/SharedPage/Errorpage";
 
 
 function App() {
   const route = createBrowserRouter([
     {
-      path: "/", element: <Main />, children: [
+      path: "/", element: <Main />,
+      errorElement:<Errorpage></Errorpage>, children: [
         { path: "/", element: <Home /> },
         { path: "/blog", element: <Blog /> },
         { path: 'login', element: <Login /> },
@@ -38,6 +40,7 @@ function App() {
 
     {
       path: '/dashboard', element: <PrivateRoute> <DashboardLayout> </DashboardLayout></PrivateRoute>,
+      errorElement:<Errorpage></Errorpage>,
       children: [
         { path: '/dashboard/myorders', element:<BuyerRoute> <Myorders> </Myorders></BuyerRoute> },
         { path: '/dashboard', element: <UserDashboard></UserDashboard>},
