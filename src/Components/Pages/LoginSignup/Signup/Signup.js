@@ -18,6 +18,7 @@ const Signup = () => {
              navigate('/')
         })
     }
+
     const handelgoogle = () => {
         googleSignIn().then(res => {
             const name = res.user.displayName;
@@ -27,8 +28,8 @@ const Signup = () => {
         })
     }
     const saveuser = (name,email,option) => {
-      
-        const user = { name, email, 
+        const user = { 
+            name, email, 
             role:option }
         fetch('http://localhost:5000/addusers', {
             method: 'POST',
@@ -36,19 +37,19 @@ const Signup = () => {
             body: JSON.stringify(user)
         }).then(res => res.json())
             .then(data => {
-               handeltoken(email)
+               
             })
     }
-    const handeltoken = (email) => {
-        console.log(email);
-        fetch(`http://localhost:5000/jwt?email=${email}`)
-            .then(res => res.json())
-            .then(data => {
-               localStorage.setItem('mTToken',data.mTToken)
-               console.log(data);
+    // const handeltoken = (email) => {
+    //     console.log(email);
+    //     fetch(`http://localhost:5000/jwt?email=${email}`)
+    //         .then(res => res.json())
+    //         .then(data => {
+    //            localStorage.setItem('mTToken',data.mTToken)
+    //            console.log(data);
                 
-            })
-    }
+    //         })
+    // }
   
     return (
 

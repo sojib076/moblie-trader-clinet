@@ -38,19 +38,20 @@ const Login = () => {
             body: JSON.stringify(user)
         }).then(res => res.json())
             .then(data => {
-                handeltoken(email)
+                // handeltoken(email)
+                console.log('under login google');
             })
     }
-    const handeltoken = (email) => {
-        console.log(email);
-        fetch(`http://localhost:5000/jwt?email=${email}`)
-            .then(res => res.json())
-            .then(data => {
-               localStorage.setItem('mTToken',data.mTToken)
-               console.log(data);
-                
-            })
-    }
+    // const handeltoken = (email) => {
+    //     console.log(email);
+    //     fetch(`http://localhost:5000/jwt?email=${email}`)
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             localStorage.setItem('mTToken', data.mTToken)
+    //             console.log(data);
+
+    //         })
+    // }
     return (
         <div >
             <div className="hero min-h-screen ">
@@ -60,7 +61,7 @@ const Login = () => {
                         <p className="py-6"> Welcome back ,
                             Please login to your account
                             and continue your journey with us.
-                            
+
                         </p>
                     </div>
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">

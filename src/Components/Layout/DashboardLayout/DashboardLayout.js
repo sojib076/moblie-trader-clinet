@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { Usercontex } from '../../../AuthContex/AuthContex';
 import Footer from '../../SharedPage/Footer/Footer';
@@ -7,21 +7,26 @@ import Navbar from '../../SharedPage/Navbar/Navbar';
 
 const DashboardLayout = () => {
     const { user } = useContext(Usercontex)
-
-    const { data ,refetch} = useQuery({
-        queryKey: ['user', user?.email],
-        queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/allusers?email=${user?.email}`,{
+  const [data, setdata] = useState([])
+    // const { data ,refetch} = useQuery({
+    //     queryKey: ['user', user?.email],
+    //     queryFn: async () => {
+    //         const res = await fetch(`http://localhost:5000/allusers?email=${user?.email}`,{
                
-            })
-            const data = await res.json()
+    //         })
+    //         const data = await res.json()
             
-            return data
+    //         return data
             
-        }
+    //     }
        
-    })
-    refetch()
+    // })
+    useEffect(()=>{
+            fetch(`http://localhost:5000/allusers?email=${user?.email}`)
+            .then(res=>res.json())
+            .then(data=>setdata(data))
+    },[user?.email])
+ 
     return (
         <div>
             <Navbar></Navbar>
