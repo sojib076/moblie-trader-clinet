@@ -1,27 +1,28 @@
 import { useQuery } from '@tanstack/react-query';
 
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Usercontex } from '../../../../AuthContex/AuthContex';
 
 const Myorders = () => {
-    const { user } = useContext(Usercontex)
-    console.log(user.email);
-    //   using use queries 
-    const { data, isloading, error } = useQuery({
-        queryKey: [user?.email],
-        queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/allorders?email=${user?.email}`)
-            const data = await res.json()
-            return data
-        }
-    })
-
-
+    const {user} = useContext(Usercontex)
+    const [data,setData] = useState([])
+    useEffect(()=>{
+        fetch(`http://localhost:5000/allorders?email=${user?.email}`,{
+          headers:{
+            authorization: `Bearer ${localStorage.getItem('mTToken')}`
+          }
+        }).then(res => res.json())
+        .then(data => setData(data))
+    },
+    [user?.email])
 
     return (
 
             <div className='grid lg:grid-cols-3 gap-5 mt-5 lg:[w-100%] w-90% mx-auto'> 
+            {
+              data?.length === 0 && <p className='text-center font-semibold'> {user?.displayName} You Have No Orders</p>
+            }
                 {
                     data?.map(item =>{
                         return <div className="card card-compact w-72  bg-base-100 shadow-xl">

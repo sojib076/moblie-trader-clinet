@@ -7,17 +7,21 @@ import Navbar from '../../SharedPage/Navbar/Navbar';
 
 const DashboardLayout = () => {
     const { user } = useContext(Usercontex)
-    console.log(user.email);
-    const { data } = useQuery({
+
+    const { data ,refetch} = useQuery({
         queryKey: ['user', user?.email],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/allusers?email=${user?.email}`)
+            const res = await fetch(`http://localhost:5000/allusers?email=${user?.email}`,{
+               
+            })
             const data = await res.json()
+            
             return data
-
+            
         }
+       
     })
-    console.log();
+    refetch()
     return (
         <div>
             <Navbar></Navbar>

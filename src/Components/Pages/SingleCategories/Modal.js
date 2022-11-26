@@ -57,6 +57,7 @@ const Modal = ({ modaldata, setModaldata }) => {
                         <input type="text" placeholder=" Your Location" className="input w-full input-bordered" name="location" required />
                         <br />
                         <input className='btn btn-accent w-full' type="submit" value="Submit" />
+                        <input className='btn btn-info w-full'  value="Cancel" onClick={()=>setModaldata(null)} />
                     </form>
                 </div>
             </div>

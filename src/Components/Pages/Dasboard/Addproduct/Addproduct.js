@@ -26,6 +26,7 @@ const Addproduct = () => {
        
         var date = new Date();
         var time = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
+
         const product = {
             category,
             selleremail:user?.email,
@@ -43,13 +44,19 @@ const Addproduct = () => {
             description,
             condition
         }
+
+
         fetch('http://localhost:5000/addphones',{
             method:'POST',
-            headers:{'Content-Type':'application/json'},
+            headers:{
+                'Content-Type':'application/json'
+            },
             body:JSON.stringify(product)
         }).then(res => res.json())
         .then(data => {
+            console.log(data);
             if(data.acknowledged){
+
                 toast.success('Product added successfully')
                 navigate('/dashboard/myproducts')
             }

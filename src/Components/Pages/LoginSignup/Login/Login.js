@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Usercontex } from '../../../../AuthContex/AuthContex';
 
 const Login = () => {
@@ -13,23 +13,17 @@ const Login = () => {
         e.preventDefault();
         const email = e.target.email.value;
         const password = e.target.password.value;
-
         login(email, password).then(res => {
-            navigate(from, { replace: true });
         })
 
     }
-
     const handelgoogle = () => {
         googleSignIn().then(res => {
-
             navigate(from, { replace: true });
-            console.log('google login');
             const name = res.user.displayName;
             const email = res.user.email;
-            const option="Buyer"
-          saveuser(name,email,option)
-
+            const option = "Buyer"
+            saveuser(name, email, option)
         })
     }
     const saveuser = (name, email, option) => {
@@ -38,21 +32,36 @@ const Login = () => {
             name, email,
             role: option
         }
-        console.log(user);
         fetch('http://localhost:5000/addusers', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(user)
         }).then(res => res.json())
+            .then(data => {
+                handeltoken(email)
+            })
     }
-    
+    const handeltoken = (email) => {
+        console.log(email);
+        fetch(`http://localhost:5000/jwt?email=${email}`)
+            .then(res => res.json())
+            .then(data => {
+               localStorage.setItem('mTToken',data.mTToken)
+               console.log(data);
+                
+            })
+    }
     return (
         <div >
             <div className="hero min-h-screen ">
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <div className="text-center lg:text-left">
                         <h1 className="text-5xl font-bold">Login now!</h1>
-                        <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                        <p className="py-6"> Welcome back ,
+                            Please login to your account
+                            and continue your journey with us.
+                            
+                        </p>
                     </div>
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                         <form className="card-body" onSubmit={handellogin}>
@@ -67,8 +76,9 @@ const Login = () => {
                                     <span className="label-text">Password</span>
                                 </label>
                                 <input type="text" placeholder="password" className="input input-bordered" name='password' />
-    
+
                             </div>
+                            <Link to={'/signup'}> Create a Account </Link>
                             <div className="form-control mt-6">
                                 <button className="btn btn-primary">Login</button>
                                 <button className="btn btn-outline mt-2" onClick={handelgoogle}>Google</button>

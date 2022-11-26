@@ -11,7 +11,7 @@ const Categories = () => {
            return res.data;
         }
     })
-    console.log(data);
+
 
     return (
         <div className='w-[90%] lg:mx-auto '>

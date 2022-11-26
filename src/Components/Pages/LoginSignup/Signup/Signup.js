@@ -1,7 +1,10 @@
 import React, { useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { Usercontex } from '../../../../AuthContex/AuthContex';
 
 const Signup = () => {
+    const navigate = useNavigate()
+    
     const {createuser,updateuser,googleSignIn}=useContext(Usercontex)
     const handelsignup = (e) => {
         e.preventDefault();
@@ -9,12 +12,11 @@ const Signup = () => {
         const email = e.target.email.value;
         const password = e.target.password.value;
         const option = e.target.option.value;
-        
         createuser(email, password).then(res => {
-            saveuser(name,email,option)
-            updateuser(name)
+            saveuser(name,email,option)  
+            updateuser(name) 
+             navigate('/')
         })
-       
     }
     const handelgoogle = () => {
         googleSignIn().then(res => {
@@ -25,17 +27,29 @@ const Signup = () => {
         })
     }
     const saveuser = (name,email,option) => {
-        console.log(name,email,);
+      
         const user = { name, email, 
             role:option }
-            console.log(user);
         fetch('http://localhost:5000/addusers', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(user)
         }).then(res => res.json())
+            .then(data => {
+               handeltoken(email)
+            })
     }
-
+    const handeltoken = (email) => {
+        console.log(email);
+        fetch(`http://localhost:5000/jwt?email=${email}`)
+            .then(res => res.json())
+            .then(data => {
+               localStorage.setItem('mTToken',data.mTToken)
+               console.log(data);
+                
+            })
+    }
+  
     return (
 
         <div>
@@ -43,7 +57,11 @@ const Signup = () => {
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <div className="text-center lg:text-left">
                         <h1 className="text-5xl font-bold"> Signup </h1>
-                        <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                        <p className="py-6">
+                            Welcome to our website,
+                            Please signup To enjoy our services
+
+                        </p>
                     </div>
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                         <form className="card-body" onSubmit={handelsignup}>
@@ -74,8 +92,8 @@ const Signup = () => {
                                 </select>
 
                             </div>
-                            {/* options */}
-
+                            
+                                <Link to={'/login'}> Have Account? login</Link>
                             <div className="form-control mt-6">
                                 <button className="btn btn-primary">Login</button>
                                 <button className="btn btn-outline mt-2" onClick={handelgoogle}>Google</button>

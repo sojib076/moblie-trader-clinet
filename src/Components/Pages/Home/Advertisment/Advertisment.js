@@ -5,7 +5,7 @@ import Loading from '../../../Loading/Loading';
 import Admodal from './Admodal';
 
 const Advertisment = () => {
-    const { data, isLoading } = useQuery({
+    const { data, isLoading,refetch } = useQuery({
         queryKey: ['advertisment'],
         queryFn: async () => {
             const res = await fetch(`http://localhost:5000/promote`)
@@ -14,11 +14,11 @@ const Advertisment = () => {
         }
     })
     const [modaldata, setModaldata] = useState(null)
-    console.log(modaldata);
     if (isLoading) {
         return <Loading></Loading>
 
     }
+    refetch()
     return (
         <div className=''>
             <div className='grid lg:grid-cols-3 gap-5 mt-5 lg:[w-100%] w-90% mx-auto'>
@@ -44,7 +44,7 @@ const Advertisment = () => {
 
                                 <p className="text-[#000000] text-[20px]"> {item.sellerName}</p>
                                 <div className="card-actions justify-end">
-                                    <label htmlFor="sojib" className="btn" onClick={() => setModaldata(item)}>open modal</label>
+                                    <label htmlFor="sojib" className="btn" onClick={() => setModaldata(item)}>Book Now</label>
                                 </div>
                             </div>
                         </div>

@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Usercontex } from '../../../../AuthContex/AuthContex';
 import toast from 'react-hot-toast';
+import { Link } from 'react-router-dom';
 
 const Admodal = ({ modaldata, setModaldata }) => {
     const { user } = useContext(Usercontex)
@@ -36,9 +37,7 @@ const Admodal = ({ modaldata, setModaldata }) => {
 
 
 
-        //   toast.success(` ${user?.displayName} 
-        //    ${name} booked successfully `);
-        //         setModaldata(null)
+
     }
     return (
         <div>
@@ -49,12 +48,17 @@ const Admodal = ({ modaldata, setModaldata }) => {
                     <h1 className='text-xl text-black'> Product name : {name}</h1>
                     <h1 className='text-xl '> Selling: {resalePrice} Tk</h1>
                     <form onSubmit={handelmodal} className='grid grid-cols-1 gap-3 mt-10'>
-                        <input type="text" defaultValue={user?.displayName} disabled className="input w-full input-bordered" />
-                        <input type="email" defaultValue={user?.email} disabled className="input w-full input-bordered" />
-                        <input type="text" placeholder=" Your Moblie Number" className="input w-full input-bordered" name="number" required />
-                        <input type="text" placeholder=" Your Location" className="input w-full input-bordered" name="location" required />
-                        <br />
-                        <input className='btn btn-accent w-full' type="submit" value="Submit" />
+                        {
+                            user?.email ? <>
+                                <input type="text" defaultValue={user?.displayName} disabled className="input w-full input-bordered" />
+                                <input type="email" defaultValue={user?.email} disabled className="input w-full input-bordered" />
+                                <input type="text" placeholder=" Your Moblie Number" className="input w-full input-bordered" name="number" required />
+                                <input type="text" placeholder=" Your Location" className="input w-full input-bordered" name="location" required />
+                                <br />
+                                <input className='btn btn-accent w-full' type="submit" value="Submit" />
+                                <input className='btn btn-info w-full'  value="Cancel" onClick={()=>setModaldata(null)} />
+                            </> : <p> Plase Login to Book <Link to={'/login'} className='btn btn-primary'> Login</Link></p>
+                            }
                     </form>
                 </div>
             </div>
