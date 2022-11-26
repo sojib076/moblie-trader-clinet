@@ -20,7 +20,7 @@ const Advertisment = () => {
     }
     refetch()
     return (
-        <div className='ml-20'>
+        <div className='lg:ml-20 ml-[5%]'>
             <div className='grid lg:grid-cols-3 gap-5 mt-5 lg:[w-100%] '>
                 {
                     data?.map(item => {

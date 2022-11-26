@@ -4,6 +4,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 import { Navigation } from 'swiper';
+import { Link } from 'react-router-dom';
 
  
 const Slider = () => {
@@ -35,9 +36,9 @@ const Slider = () => {
                             </h1>
                             <div>
                                 <p className='lg:text-xl text-white text-center' >
-                                    Get flat 10% off
+                                   
                                 </p>
-                                <button className='btn bg-[#42C8B7] ml-[40%] md:ml-[0%] btn-xs md:btn-md lg:mt-5 border-none' > Book Now</button>
+                                <Link to={'/categories/637e60081645816e3ab30c2f'}> <button className='btn bg-[#42C8B7] ml-[40%] md:ml-[0%] btn-xs md:btn-md lg:mt-5 border-none' > Book Now</button></Link>
                             </div>
                         </div>
                         <div className='w-[45%]'>
