@@ -1,9 +1,9 @@
-website link https://eleven-deded.web.app/dashboard/allseller : Moblie trader
+website link https://eleven-deded.web.app : Moblie trader
 
  
-Admin Login :
-email sojibadmin@gmail.com
-passwpord 111111
+Admin Login email :
+ sojibadmin@gmail.com ,
+Admin  password :  111111
 
 short description:
 # Moblie trader
