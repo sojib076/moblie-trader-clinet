@@ -21,7 +21,7 @@ const Admodal = ({ modaldata, setModaldata }) => {
             location,
             selleremail,
         }
-        fetch('http://localhost:5000/allorders', {
+        fetch('https://moblie.vercel.app/allorders', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

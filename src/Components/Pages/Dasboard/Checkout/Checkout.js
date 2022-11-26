@@ -11,7 +11,7 @@ const Checkout = ({ data }) => {
     const [transId, settransId] = useState('')
 
     useEffect(() => {
-        fetch("http://localhost:5000/create-payment", {
+        fetch("https://moblie.vercel.app/create-payment", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -71,7 +71,7 @@ const Checkout = ({ data }) => {
                 orderid: orderid,
             }
 
-            fetch(`http://localhost:5000/conpayment`, {
+            fetch(`https://moblie.vercel.app/conpayment`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payment),

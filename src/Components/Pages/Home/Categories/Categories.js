@@ -7,7 +7,7 @@ const Categories = () => {
     const { data } = useQuery({
         queryKey: ['categories'],
         queryFn: async () => {
-            const res = await axios.get('http://localhost:5000/categories');
+            const res = await axios.get('https://moblie.vercel.app/categories');
            return res.data;
         }
     })

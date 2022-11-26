@@ -46,7 +46,7 @@ const Addproduct = () => {
         }
 
 
-        fetch('http://localhost:5000/addphones',{
+        fetch('https://moblie.vercel.app/addphones',{
             method:'POST',
             headers:{
                 'Content-Type':'application/json'
@@ -111,3 +111,17 @@ const Addproduct = () => {
 };
 
 export default Addproduct;
+
+//       const imgage =  e.target.picture.files[0]
+// console.log(imgage);
+// const formData = new FormData();
+// formData.append('imgage', imgage);
+// fetch('https://api.imgbb.com/1/upload?key=d60f810f9d4a6887960f0d0277e0e077',
+//     {
+//         method: 'POST',
+//         body: formData
+//     })
+//     .then(res => res.json())
+//     .then(Data => {
+//         console.log(Data.data.url);
+//     })

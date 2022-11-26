@@ -10,7 +10,7 @@ const SellerRoute = ({children}) => {
           const {data ,isLoading}=useQuery({
             queryKey: ['user', user?.email],
             queryFn: async () => {
-                const res = await fetch(`http://localhost:5000/allusers?email=${user?.email}`)
+                const res = await fetch(`https://moblie.vercel.app/allusers?email=${user?.email}`)
                 const data = await res.json()
                 return data
             }

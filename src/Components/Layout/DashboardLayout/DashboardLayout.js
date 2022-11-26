@@ -11,7 +11,7 @@ const DashboardLayout = () => {
     // const { data ,refetch} = useQuery({
     //     queryKey: ['user', user?.email],
     //     queryFn: async () => {
-    //         const res = await fetch(`http://localhost:5000/allusers?email=${user?.email}`,{
+    //         const res = await fetch(`https://moblie.vercel.app/allusers?email=${user?.email}`,{
                
     //         })
     //         const data = await res.json()
@@ -22,7 +22,7 @@ const DashboardLayout = () => {
        
     // })
     useEffect(()=>{
-            fetch(`http://localhost:5000/allusers?email=${user?.email}`)
+            fetch(`https://moblie.vercel.app/allusers?email=${user?.email}`)
             .then(res=>res.json())
             .then(data=>setdata(data))
     },[user?.email])
@@ -57,7 +57,7 @@ const DashboardLayout = () => {
 
                 </div>
             </div>
-            <Footer></Footer>
+          
         </div>
     );
 };

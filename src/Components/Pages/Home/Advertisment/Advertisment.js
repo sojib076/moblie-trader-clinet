@@ -8,7 +8,7 @@ const Advertisment = () => {
     const { data, isLoading,refetch } = useQuery({
         queryKey: ['advertisment'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/promote`)
+            const res = await fetch(`https://moblie.vercel.app/promote`)
             const data = await res.json()
             return data
         }
@@ -20,11 +20,11 @@ const Advertisment = () => {
     }
     refetch()
     return (
-        <div className=''>
-            <div className='grid lg:grid-cols-3 gap-5 mt-5 lg:[w-100%] w-90% mx-auto'>
+        <div className='ml-20'>
+            <div className='grid lg:grid-cols-3 gap-5 mt-5 lg:[w-100%] '>
                 {
                     data?.map(item => {
-                        return item?.paid ? null : <div className="card card-compact w-96 bg-[#A6CECE] shadow-xl mt-10 lg:mt-0 ">
+                        return item?.paid ? null : <div className="card card-compact w-80 bg-[#A6CECE] shadow-xl mt-10 lg:mt-0 ">
                             <figure><img src={item.picture} alt="Shoes" className='h-24 w-24' /></figure>
                             <div className="card-body ">
                                 <h2 className="text-xl">{item.name}</h2>

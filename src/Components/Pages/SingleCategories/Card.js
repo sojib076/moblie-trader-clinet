@@ -28,7 +28,7 @@ const Card = ({ info, setModaldata }) => {
 
                 <p className="text-[#000000] text-[20px]"> {sellerName} {veify && 'sojib'} </p>
                 <div className="card-actions justify-end">
-                    <label htmlFor="my-modal" className="btn" onClick={() => setModaldata(info)}>open modal</label>
+                    <label htmlFor="my-modal" className="btn" onClick={() => setModaldata(info)}>Book Now</label>
                     
                 </div>
             </div>

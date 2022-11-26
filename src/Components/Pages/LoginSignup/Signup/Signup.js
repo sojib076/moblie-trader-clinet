@@ -31,7 +31,7 @@ const Signup = () => {
         const user = { 
             name, email, 
             role:option }
-        fetch('http://localhost:5000/addusers', {
+        fetch('https://moblie.vercel.app/addusers', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(user)
@@ -42,7 +42,7 @@ const Signup = () => {
     }
     // const handeltoken = (email) => {
     //     console.log(email);
-    //     fetch(`http://localhost:5000/jwt?email=${email}`)
+    //     fetch(`https://moblie.vercel.app/jwt?email=${email}`)
     //         .then(res => res.json())
     //         .then(data => {
     //            localStorage.setItem('mTToken',data.mTToken)

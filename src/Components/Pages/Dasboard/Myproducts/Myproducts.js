@@ -8,7 +8,7 @@ const Myproducts = () => {
     const { data: sellerorder = [],refetch } = useQuery({
         queryKey: ['sellerorder', user?.email],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/sellerorder?email=${user?.email}`)
+            const res = await fetch(`https://moblie.vercel.app/sellerorder?email=${user?.email}`)
             const data = await res.json()
             return data
 
@@ -16,7 +16,7 @@ const Myproducts = () => {
     })
     console.log(sellerorder);
     const handeldelt = (id) => {
-        fetch(`http://localhost:5000/allphones/${id}`, {
+        fetch(`https://moblie.vercel.app/allphones/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
@@ -28,7 +28,7 @@ const Myproducts = () => {
             })
     }
     const handelpromote = (id) => {
-       fetch(`http://localhost:5000/promote `,{
+       fetch(`https://moblie.vercel.app/promote `,{
         method:'POST',
         headers:{
             'Content-Type':'application/json'
