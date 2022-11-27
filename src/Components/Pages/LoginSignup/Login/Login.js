@@ -15,6 +15,7 @@ const Login = () => {
         const password = e.target.password.value;
         login(email, password).then(res => {
             navigate(from, { replace: true });
+            handeltoken(email)
         })
 
     }
@@ -24,6 +25,7 @@ const Login = () => {
             const name = res.user.displayName;
             const email = res.user.email;
             const option = "Buyer"
+            handeltoken(email)
             saveuser(name, email, option)
         })
     }
@@ -39,20 +41,18 @@ const Login = () => {
             body: JSON.stringify(user)
         }).then(res => res.json())
             .then(data => {
-                // handeltoken(email)
-                console.log('under login google');
             })
     }
-    // const handeltoken = (email) => {
-    //     console.log(email);
-    //     fetch(`https://moblie.vercel.app/jwt?email=${email}`)
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             localStorage.setItem('mTToken', data.mTToken)
-    //             console.log(data);
+    const handeltoken = (email) => {
+        console.log(email);
+        fetch(`https://moblie.vercel.app/jwt?email=${email}`)
+            .then(res => res.json())
+            .then(data => {
+                localStorage.setItem('mTToken', data.mTToken)
+                console.log(data);
 
-    //         })
-    // }
+            })
+    }
     return (
         <div >
             <div className="hero min-h-screen ">

@@ -33,23 +33,23 @@ const Signup = () => {
             role:option }
         fetch('https://moblie.vercel.app/addusers', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 'Content-Type':'application/json' },
             body: JSON.stringify(user)
         }).then(res => res.json())
             .then(data => {
-               
+                handeltoken(email)
             })
     }
-    // const handeltoken = (email) => {
-    //     console.log(email);
-    //     fetch(`https://moblie.vercel.app/jwt?email=${email}`)
-    //         .then(res => res.json())
-    //         .then(data => {
-    //            localStorage.setItem('mTToken',data.mTToken)
-    //            console.log(data);
+    const handeltoken = (email) => {
+        console.log(email);
+        fetch(`https://moblie.vercel.app/jwt?email=${email}`)
+            .then(res => res.json())
+            .then(data => {
+               localStorage.setItem('mTToken',data.mTToken)
+               console.log(data);
                 
-    //         })
-    // }
+            })
+    }
   
     return (
 

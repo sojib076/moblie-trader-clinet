@@ -63,7 +63,7 @@ const Card = ({ info, setModaldata }) => {
                 </div>
 
               <span className='flex'> 
-              {isverify && <FaCheckSquare className='text-green-900 font-bold'></FaCheckSquare> } <p className="text-[#000000] text-[20px]"> {sellerName} </p>
+              {isverify? <FaCheckSquare className='text-green-900 font-bold'></FaCheckSquare>:null } <p className="text-[#000000] text-[20px]"> {sellerName} </p>
                 {isverify ? <p className="text-green-700 font-bold text-[15px]"> Post by Verified Seller </p> : null}
               </span>
                 <div className="card-actions justify-end">
