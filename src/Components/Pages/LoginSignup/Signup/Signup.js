@@ -4,7 +4,6 @@ import { Usercontex } from '../../../../AuthContex/AuthContex';
 
 const Signup = () => {
     const navigate = useNavigate()
-    
     const {createuser,updateuser,googleSignIn}=useContext(Usercontex)
     const handelsignup = (e) => {
         e.preventDefault();
@@ -25,6 +24,7 @@ const Signup = () => {
             const email = res.user.email;
             const option="Buyer"
           saveuser(name,email,option)
+          navigate('/')
         })
     }
     const saveuser = (name,email,option) => {
