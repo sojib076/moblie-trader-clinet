@@ -1,11 +1,36 @@
 import React from 'react';
+import toast from 'react-hot-toast';
 
 const Card = ({ info, setModaldata }) => {
 
-    const { picture, time, resalePrice, yearsOfUse, sellerName, originalPrice, name, location, veify, avaiable, condition, phonenumber, description } = info;
+
+
+    const handelreport=(reportinfo)=>{
+   
+       const report={
+              name:reportinfo.name,
+              reportid :reportinfo._id,
+              sellerName:reportinfo.sellerName,
+       } 
+
+       fetch('https://moblie.vercel.app/report', {
+              method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(report)
+            }).then(res => res.json())
+                .then(data => {
+                    if (data) {
+                        toast.success('Reported successfully')
+                               }
+                
+       })
+    }
+    const { picture, time, resalePrice, yearsOfUse, sellerName, originalPrice, name, location, veify, condition, phonenumber, description } = info;
     return (info.paid ? null :
-        <div className="card card-compact w-96 bg-[#A6CECE] shadow-xl mt-10 lg:mt-0  ">
-            <figure><img src={picture} alt="Shoes" className='h-24 w-24' /></figure>
+        <div className="card card-compact  w-80 lg:w-96 bg-[#A6CECE] shadow-xl mt-10 lg:mt-0  ">
+            <figure><img src={picture} alt="Shoes" className='h-32 w-52' /></figure>
             <div className="card-body  ">
                 <h2 className="text-xl">{name}</h2>
 
@@ -29,6 +54,7 @@ const Card = ({ info, setModaldata }) => {
                 <p className="text-[#000000] text-[20px]"> {sellerName} {veify && 'sojib'} </p>
                 <div className="card-actions justify-end">
                     <label htmlFor="my-modal" className="btn" onClick={() => setModaldata(info)}>Book Now</label>
+                    <label htmlFor="my-modal" className="btn" onClick={()=>handelreport(info)}>Report to Admin</label>
                     
                 </div>
             </div>

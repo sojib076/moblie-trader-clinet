@@ -19,6 +19,7 @@ import Errorpage from "./Components/SharedPage/Errorpage";
 import Adminroute from "./Components/allRoute/PrivateRoute/Adminroute";
 import Allbuyer from "./Components/Pages/Dasboard/Allbuyer/Allbuyer";
 import Allseller from "./Allseller";
+import Report from "./Components/Pages/Dasboard/Report/Report";
 
 
 function App() {
@@ -42,7 +43,7 @@ function App() {
     },
 
     {
-      path: '/dashboard', element: <PrivateRoute> <DashboardLayout> </DashboardLayout></PrivateRoute>,
+      path: '/', element: <PrivateRoute> <DashboardLayout> </DashboardLayout></PrivateRoute>,
       errorElement:<Errorpage></Errorpage>,
       children: [
         { path: '/dashboard/myorders', element:<BuyerRoute> <Myorders> </Myorders></BuyerRoute> },
@@ -51,6 +52,7 @@ function App() {
         { path: '/dashboard/addproduct', element: <SellerRoute><Addproduct></Addproduct> </SellerRoute>},
         { path: '/dashboard/allbuyer', element: <Adminroute><Allbuyer></Allbuyer> </Adminroute>},
         { path: '/dashboard/allseller', element: <Adminroute><Allseller> </Allseller> </Adminroute>},
+        { path: '/dashboard/report', element: <Adminroute><Report></Report></Adminroute>},
    
 
         { path: '/dashboard/admin', element: <SellerRoute><Addproduct></Addproduct> </SellerRoute>},

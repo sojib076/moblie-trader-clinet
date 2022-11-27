@@ -32,6 +32,7 @@ const Allbuyer = () => {
             })
             
   }
+  console.log(data);
     return (
         <div className='grid lg:grid-cols-2 gap-5'>
             {
@@ -39,6 +40,8 @@ const Allbuyer = () => {
                     return <div className="card card-compact w-80 bg-base-100 shadow-xl">
                         <div className="card-body">
                             <h2 className="card-title">{buyer.name}</h2>
+                            <h2 className="">{buyer.email}</h2>
+                            <h2 className="">{buyer.role}</h2>
                             <div className="card-actions justify-end">
                                 <button className="btn btn-primary" onClick={()=>handeldelt(buyer._id)}> Delete </button>
                               

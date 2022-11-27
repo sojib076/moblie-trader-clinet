@@ -51,6 +51,7 @@ const DashboardLayout = () => {
                             data?.role === 'admin' &&  <> 
                             <li><Link to={'/dashboard/allseller'} className='btn bg-[#42C8B7] mt-5 hover:text-white'> All Seller </Link></li>
                             <li><Link to={'/dashboard/allbuyer'} className='btn bg-[#42C8B7] mt-5 hover:text-white'> All Buyer </Link></li>
+                            <li><Link to={'/dashboard/report'} className='btn bg-[#42C8B7] mt-5 hover:text-white'> All Report </Link></li>
                             </>
                         }
                     </ul>
