@@ -13,10 +13,9 @@ const Myproducts = () => {
             const res = await fetch(`https://moblie-sojib076.vercel.app/sellerorder?email=${user?.email}`)
             const data = await res.json()
             return data
-
         }
     })
-    console.log(sellerorder);
+
     const handeldelt = (id) => {
         fetch(`https://moblie-sojib076.vercel.app/allphones/${id}`, {
             method: 'DELETE'

@@ -8,7 +8,7 @@ const Myorders = () => {
     const {user} = useContext(Usercontex)
     const [data,setData] = useState([])
     useEffect(()=>{
-        fetch(`http://localhost:5000/allorders?email=${user?.email}`,{
+        fetch(`https://moblie-sojib076.vercel.app/allorders?email=${user?.email}`,{
           headers:{
             authorization: `Bearer ${localStorage.getItem('mTToken')}`
           }

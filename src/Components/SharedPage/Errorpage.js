@@ -17,7 +17,7 @@ const Errorpage = () => {
     }
 
     return (
-        <div className='error flex justify-center items-center flex-col'>
+        <div className='error flex justify-center items-center flex-col error'>
             <p className='text-black text-5xl'>{error.statusText || error.message}</p>
             <p className='text-black text-5xl'>Sorry Noting is there </p>
             {
