@@ -27,7 +27,7 @@ const Card = ({ info, setModaldata }) => {
   console.log(info);
         const [isverify, setverify] = useState(false)
         useEffect(()=>{
-            const url = `https://moblie.vercel.app?email=${sellerEmail}`
+            const url = `https://moblie.vercel.app/verifyseller?email=${sellerEmail}`
             fetch(url)
                 .then(res => res.json())
                 .then(data => {
@@ -64,7 +64,7 @@ const Card = ({ info, setModaldata }) => {
 
               <span className='flex'> 
               {isverify && <FaCheckSquare className='text-green-900 font-bold'></FaCheckSquare> } <p className="text-[#000000] text-[20px]"> {sellerName} </p>
-                {isverify ? <p className="text-green-700 font-bold text-[10px]"> Verified Seller </p> : null}
+                {isverify ? <p className="text-green-700 font-bold text-[15px]"> Post by Verified Seller </p> : null}
               </span>
                 <div className="card-actions justify-end">
                     <label htmlFor="my-modal" className="btn" onClick={() => setModaldata(info)}>Book Now</label>
