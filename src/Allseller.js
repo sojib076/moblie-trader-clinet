@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
+
 import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 
@@ -21,7 +21,20 @@ const Allseller = () => {
             })
             
   }
-  console.log(data);
+const handelverify = (email) => {
+    fetch(`http://localhost:5000/verify`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({email})
+    })
+        .then(res => res.json())
+        .then(data => {
+            setresfect(!refect)
+            toast.success('user verified successfully')
+        })
+}
     return (
         <div className='grid lg:grid-cols-3 gap-4'>
             {
@@ -32,7 +45,7 @@ const Allseller = () => {
                             <h2 className='text-green-700'>{buyer.email}</h2>
                             <div className="card-actions justify-end">
                                 <button className="btn btn-primary" onClick={()=>handeldelt(buyer._id)}> Delete </button>
-                                <button className="btn btn-primary" >Verify </button>
+                                <button className="btn btn-primary" onClick={()=>handelverify(buyer.email)} >Verify </button>
                             </div>
                         </div>
                     </div>

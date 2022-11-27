@@ -1,19 +1,15 @@
 
 import { useQuery } from '@tanstack/react-query';
-import React, { useEffect, useState } from 'react';
+
 import toast from 'react-hot-toast';
+import Loading from '../../../Loading/Loading';
 
 
 const Allbuyer = () => {
 
-    // const [data, setdata] = useState([])
-    // useEffect(() => {
-    //     fetch('https://moblie.vercel.app/buyer')
-    //         .then(res => res.json())
-    //         .then(data => setdata(data))
-    // }, [])
+   
 
-    const {data,refetch}=useQuery({
+    const {data,refetch,isLoading}=useQuery({
         queryKey:'buyer',
         queryFn: async()=>{
             const res=await fetch('https://moblie.vercel.app/buyer')
@@ -21,7 +17,10 @@ const Allbuyer = () => {
             return data
         }
     })
-    
+    if (isLoading) {
+        return <Loading></Loading>
+        
+    }
   const handeldelt = (id) => {
         fetch(`https://moblie.vercel.app/userdlt/${id}`, {
             method: 'DELETE'
