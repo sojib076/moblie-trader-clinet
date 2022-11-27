@@ -22,7 +22,7 @@ const Allseller = () => {
             
   }
 const handelverify = (email) => {
-    fetch(`http://localhost:5000/verify`, {
+    fetch(`https://moblie.vercel.app/verify`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"

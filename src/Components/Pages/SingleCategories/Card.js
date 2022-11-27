@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
-import { FaCheckSquare } from "react-icons/fa";
+import { FaCheckSquare, tic } from 'react-icons/fa';
 
 const Card = ({ info, setModaldata }) => {
     const handelreport = (reportinfo) => {
@@ -27,7 +27,7 @@ const Card = ({ info, setModaldata }) => {
   console.log(info);
         const [isverify, setverify] = useState(false)
         useEffect(()=>{
-            const url = `http://localhost:5000/verifyseller?email=${sellerEmail}`
+            const url = `https://moblie.vercel.app?email=${sellerEmail}`
             fetch(url)
                 .then(res => res.json())
                 .then(data => {
@@ -35,7 +35,7 @@ const Card = ({ info, setModaldata }) => {
                        setverify(true)
                      }
                 })
-        },[sellerEmail])
+        },[])
 
 
     return (info.paid ? null :
@@ -62,11 +62,10 @@ const Card = ({ info, setModaldata }) => {
                     </div>
                 </div>
 
-              <span className='flex justify-between'> 
-                <FaCheckSquare className='text-green-900 font-bold'></FaCheckSquare> <p className='text-[20px]'>{sellerName}</p>
-                {isverify ? <p className="text-green-700 font-bold text-[15px]"> Post By Verified Seller </p> : null}
+              <span className='flex'> 
+              {isverify && <FaCheckSquare className='text-green-900 font-bold'></FaCheckSquare> } <p className="text-[#000000] text-[20px]"> {sellerName} </p>
+                {isverify ? <p className="text-green-700 font-bold text-[10px]"> Verified Seller </p> : null}
               </span>
-                
                 <div className="card-actions justify-end">
                     <label htmlFor="my-modal" className="btn" onClick={() => setModaldata(info)}>Book Now</label>
                     <label htmlFor="my-modal" className="btn" onClick={() => handelreport(info)}>Report to Admin</label>
