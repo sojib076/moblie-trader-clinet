@@ -8,19 +8,7 @@ import Navbar from '../../SharedPage/Navbar/Navbar';
 const DashboardLayout = () => {
     const { user } = useContext(Usercontex)
   const [data, setdata] = useState([])
-    // const { data ,refetch} = useQuery({
-    //     queryKey: ['user', user?.email],
-    //     queryFn: async () => {
-    //         const res = await fetch(`https://moblie.vercel.app/allusers?email=${user?.email}`,{
-               
-    //         })
-    //         const data = await res.json()
-            
-    //         return data
-            
-    //     }
-       
-    // })
+  // this is the dashboard layout page for nested layout
     useEffect(()=>{
             fetch(`https://moblie.vercel.app/allusers?email=${user?.email}`)
             .then(res=>res.json())

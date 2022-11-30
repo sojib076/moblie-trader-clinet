@@ -48,12 +48,11 @@ const Card = ({ info, setModaldata }) => {
                     <div className=' '>
                         <p className="text-[#000000] text-[18px]"> Orginal Price : <span className='text-black font-semibold underline'>{originalPrice}Tk </span> </p>
                         <p className="text-[#000000] text-[18px] "> Selling Price : <span className='text-black font-semibold underline'>{resalePrice}Tk </span> </p>
-
-
+                        
                         <p className="text-[#000000] text-[15px]">{yearsOfUse} year used  </p>
                         <p className="text-[#000000] text-[15px]"> post time : {time} </p>
                     </div>
-                    <div className=''>
+                    <div className=' flex flex-col'>
                         <p className="text-[#000000]"> Location : {location} </p>
                         <p className="text-[#000000]"> phone : {phonenumber} </p>
 

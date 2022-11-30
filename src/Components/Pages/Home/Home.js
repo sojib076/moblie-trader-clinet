@@ -6,6 +6,7 @@ import Slider from './Slider/Slider';
 
 const Home = () => {
     return (
+        // this home page is the main page of the website
         <div>
             <Slider> </Slider>
             <Categories> </Categories>

@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { Usercontex } from '../../../../AuthContex/AuthContex';
 
 const Addproduct = () => {
+    // this is the add product page for seller
     const navigate = useNavigate()
     const {user} = useContext(Usercontex)
     console.log(user.email);

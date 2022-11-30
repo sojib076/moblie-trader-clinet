@@ -1,5 +1,5 @@
 .error{
-    background-image: url('../../assests/404.png');
+    background-image: url('./404.png');
   
    height: 100vh;
     background-size: cover;

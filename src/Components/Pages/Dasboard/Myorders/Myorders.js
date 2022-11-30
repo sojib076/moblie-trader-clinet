@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { Usercontex } from '../../../../AuthContex/AuthContex';
 
 const Myorders = () => {
+  // this is the my orders page for user 
     const {user} = useContext(Usercontex)
     const [data,setData] = useState([])
     useEffect(()=>{
