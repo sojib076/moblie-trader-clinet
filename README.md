@@ -4,6 +4,8 @@ website link https://eleven-deded.web.app : Moblie trader
 Admin Login email :
  sojibadmin@gmail.com ,
 Admin  password :  111111
+if you login with google account then you can't see admin panel it will be a buyer accout 
+Note: more update coming soon
 
 short description:
 # Moblie trader
