@@ -24,7 +24,7 @@ import Report from "./Components/Pages/Dasboard/Report/Report";
 
 function App() {
   const route = createBrowserRouter([
-    {
+      {
       path: "/", element: <Main />,
       errorElement:<Errorpage></Errorpage>, children: [
         { path: "/", element: <Home /> },
@@ -33,7 +33,7 @@ function App() {
         { path: '/signup', element: <Signup /> },
 
         {
-          path: 'categories/:id', element: <PrivateRoute> <SingleCategories> </SingleCategories></PrivateRoute>,
+          path: 'categories/:id', element: <SingleCategories> </SingleCategories>,
           loader: ({ params }) => {
             return fetch(`https://moblie.vercel.app/categories/${params.id}`).then(res => res.json())
           }
@@ -53,8 +53,7 @@ function App() {
         { path: '/dashboard/allbuyer', element: <Adminroute><Allbuyer></Allbuyer> </Adminroute>},
         { path: '/dashboard/allseller', element: <Adminroute><Allseller> </Allseller> </Adminroute>},
         { path: '/dashboard/report', element: <Adminroute><Report></Report></Adminroute>},
-   
-
+  
         { path: '/dashboard/admin', element: <SellerRoute><Addproduct></Addproduct> </SellerRoute>},
         {path:'/dashboard/payment/:id', element:<Payment></Payment>,
         loader:({params}) => fetch(`https://moblie.vercel.app/payment/${params.id}`)

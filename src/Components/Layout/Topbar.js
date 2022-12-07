@@ -30,8 +30,8 @@ const Topbar = () => {
                 <div>
                         {
                             user?.email?  <Link onClick={logout}
-                            className='btn outline-none lg:mt-2 lg:ml-[50%] lg:inline-flex hidden text-center m-5 bg-[#42C8B7]' > 
-                            Logout</Link> : <Link to={'/login'} className='btn outline-none lg:mt-2 lg:ml-[50%] lg:inline-flex hidden text-center m-5 bg-[#42C8B7]' > 
+                            className='btn outline-none lg:mt-2 lg:ml-[50%] lg:inline-flex hidden text-center m-5 bg-[#9AB7D3]' > 
+                            Logout</Link> : <Link to={'/login'} className='btn outline-none lg:mt-2 lg:ml-[50%] lg:inline-flex hidden text-center m-5 bg-[#9AB7D3]' > 
                             Login Now</Link>
                         }
                 </div>

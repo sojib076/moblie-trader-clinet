@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
-import { FaCheckSquare, tic } from 'react-icons/fa';
+import { FaCheckSquare, } from 'react-icons/fa';
 
 const Card = ({ info, setModaldata }) => {
     const handelreport = (reportinfo) => {
@@ -39,7 +39,7 @@ const Card = ({ info, setModaldata }) => {
 
 
     return (info.paid ? null :
-        <div className="card card-compact  w-80 lg:w-[90%] bg-[#A6CECE] shadow-xl mt-10 lg:mt-0  ">
+        <div className="card card-compact  w-80 lg:w-[90%] bg-[#BDD0C4] shadow-xl mt-10 lg:mt-0  ">
             <figure><img src={picture} alt="Shoes" className='h-32 w-52' /></figure>
             <div className="card-body  ">
                 <h2 className="text-xl">{name}</h2>

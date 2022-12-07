@@ -41,7 +41,7 @@ const Navbar = () => {
                             user?.email ? <>
                                 <li> <Link to={'/dashboard'}> Dashboard</Link>  </li>
                                 <li> <Link onClick={logout}> Logout</Link>  </li>
-        
+
                             </> : <>
                                 <>
                                     <li> <Link to={'/login'}> Login</Link>  </li>
