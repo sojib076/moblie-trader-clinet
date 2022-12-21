@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { toast } from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Usercontex } from '../../../../AuthContex/AuthContex';
 
@@ -16,6 +17,13 @@ const Login = () => {
         login(email, password).then(res => {
             navigate(from, { replace: true });
             handeltoken(email)
+        }).catch(error => {
+            if (error.code === "auth/wrong-password") {
+                toast.error("Wrong password");
+              }else if(error.code === "auth/user-not-found"){
+                toast.error("User not found");}else if(error.code === "auth/invalid-email"){
+                  toast.error("Invalid email");
+                }
         })
 
     }
