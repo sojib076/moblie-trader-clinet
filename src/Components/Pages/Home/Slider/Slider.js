@@ -54,14 +54,14 @@ const Slider = () => {
                                 // repeat thus 
                                 repeat={{ yoyo: Infinity }}
                             >
-                                Check out 
+                                Sell your old phone
                             </motion.p>
                             <motion.p className='lg:text-xl text-white text-center'
                                 initial={{ opacity: 0, x: '-100vw' }}
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ delay: 3, type: 'spring', stiffness: 120 }}
                                 style={{ display: 'inline-block' }} >
-                                Those MI moblie
+                                get cash
                             </motion.p>
                             <div>
                                 <p className='lg:text-xl text-white text-center' >
